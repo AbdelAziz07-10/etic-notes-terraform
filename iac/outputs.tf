@@ -17,3 +17,13 @@ output "storage_account_id" {
   description = "ID of the storage account"
   value       = module.storage.storage_account_id
 }
+
+output "web_app_url" {
+  description = "Default URL of the Web App"
+  value       = module.webapp.web_app_url
+}
+
+output "key_vault_uri" {
+  description = "URI of the Key Vault"
+  value       = module.webapp.key_vault_uri
+}

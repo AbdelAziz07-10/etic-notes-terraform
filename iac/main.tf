@@ -42,3 +42,19 @@ module "storage" {
 
   tags = local.common_tags
 }
+
+module "webapp" {
+  source = "./modules/webapp"
+
+  resource_group_name = azurerm_resource_group.main.name
+  location            = var.location
+
+  app_service_plan_name = var.app_service_plan_name
+  web_app_name          = var.web_app_name
+  managed_identity_name = var.managed_identity_name
+  key_vault_name        = var.key_vault_name
+
+  app_subnet_id = module.network.subnet_ids["app"]
+
+  tags = local.common_tags
+}
