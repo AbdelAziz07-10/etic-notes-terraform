@@ -38,3 +38,13 @@ variable "vnet_name" {
   description = "Name of the virtual network"
   type        = string
 }
+
+variable "storage_account_name" {
+  description = "Name of the storage account"
+  type        = string
+}
+
+variable "private_endpoint_subnet_name" {
+  description = "Name of the subnet used for private endpoints"
+  type        = string
+}
