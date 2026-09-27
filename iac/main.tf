@@ -23,7 +23,7 @@ module "network" {
 
   vnet_name          = var.vnet_name
   vnet_address_space = var.vnet_address_space
-  subnets             = var.subnets
+  subnets            = var.subnets
 
   tags = local.common_tags
 }
