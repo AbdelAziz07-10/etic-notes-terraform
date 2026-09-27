@@ -58,3 +58,37 @@ module "webapp" {
 
   tags = local.common_tags
 }
+
+resource "azurerm_log_analytics_workspace" "main" {
+  name                = var.log_analytics_workspace_name
+  location            = var.location
+  resource_group_name = azurerm_resource_group.main.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+
+  tags = local.common_tags
+}
+
+resource "azurerm_monitor_diagnostic_setting" "webapp" {
+  name                       = "webapp-diagnostics"
+  target_resource_id         = module.webapp.web_app_id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
+
+  enabled_log {
+    category_group = "allLogs"
+  }
+
+  enabled_metric {
+    category = "AllMetrics"
+  }
+}
+
+resource "azurerm_monitor_diagnostic_setting" "storage" {
+  name                       = "storage-diagnostics"
+  target_resource_id         = module.storage.storage_account_id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
+
+  enabled_metric {
+    category = "AllMetrics"
+  }
+}

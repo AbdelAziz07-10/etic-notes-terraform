@@ -12,3 +12,8 @@ output "managed_identity_principal_id" {
   description = "Principal ID of the Web App managed identity"
   value       = azurerm_user_assigned_identity.main.principal_id
 }
+
+output "web_app_id" {
+  description = "ID of the Web App"
+  value       = azurerm_linux_web_app.main.id
+}
