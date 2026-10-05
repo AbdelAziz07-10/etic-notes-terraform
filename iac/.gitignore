@@ -21,3 +21,6 @@ crash.*.log
 # Terraform CLI configuration
 .terraformrc
 terraform.rc
+
+# notes
+note.md
