@@ -73,3 +73,13 @@ variable "log_analytics_workspace_name" {
   description = "Name of the Log Analytics workspace"
   type        = string
 }
+
+variable "enable_secondary_web_app" {
+  description = "whether to create a secondary web app"
+  type = bool
+}
+
+variable "resource_group_name" {
+  description = "Name of the resource group"
+  type        = string
+}
